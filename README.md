@@ -1,2 +1,4 @@
 # horovod_benchmark
-Northeastern EECE5640 Final Project
+My Final Project for EECE5640 High Performance Computing taught at Northeastern Unviersity in the Spring 2020.
+
+Focuses on replicating the Horovod benchmarks.
