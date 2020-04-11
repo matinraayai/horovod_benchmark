@@ -1,6 +1,5 @@
 """
-# Modified the Horovod benchmark for TensorFlow Distributed.
-# This benchmark only runs vgg-16 now.
+# Single GPU equivalent of the Horovod Synthetic Benchmark for Tensorflow.
 # Copyright 2019 Uber Technologies, Inc. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,16 +26,14 @@ import tensorflow as tf
 from tensorflow.keras import applications
 
 # Benchmark settings
-parser = argparse.ArgumentParser(description='TensorFlow 2 Distributed Synthetic Benchmark'
-                                             'for VGG-16',
+parser = argparse.ArgumentParser(description='TensorFlow 2 Single-GPU Synthetic Benchmark'
+                                             'for VGG-16.',
                                  formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-parser.add_argument('--fp16-allreduce', action='store_true', default=False,
-                    help='use fp16 compression during allreduce')
 
 parser.add_argument('--batch-size', type=int, default=32,
                     help='input batch size')
 
-parser.add_argument('--num-warmup-batches', type=int, default=10,
+parser.add_argument('--num-warmup-batches', type=int, default=3,
                     help='number of warm-up batches that don\'t count towards benchmark')
 
 parser.add_argument('--num-batches-per-iter', type=int, default=10,
@@ -68,12 +65,10 @@ target = tf.random.uniform([args.batch_size, 1], minval=0, maxval=999, dtype=tf.
 @tf.function
 def benchmark_step():
 
-    # Horovod: use DistributedGradientTape
     with tf.GradientTape() as tape:
         probs = model(data, training=True)
         loss = tf.losses.categorical_crossentropy(target, probs)
 
-    # Horovod: add Horovod Distributed GradientTape.
 
     gradients = tape.gradient(loss, model.trainable_variables)
     opt.apply_gradients(zip(gradients, model.trainable_variables))

@@ -27,7 +27,7 @@ import horovod.tensorflow as hvd
 from tensorflow.keras import applications
 
 # Benchmark settings
-parser = argparse.ArgumentParser(description='TensorFlow on Horovod Synthetic Benchmark',
+parser = argparse.ArgumentParser(description='TensorFlow 2 on Horovod Synthetic Benchmark',
                                  formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
 parser.add_argument('--batch-size', type=int, default=32,
