@@ -1,0 +1,64 @@
+NNODES: 2
+JOBID: 10691274
+CPLUS_INCLUDE_PATH=/shared/centos7/gcc/8.1.0/lib/gcc/x86_64-pc-linux-gnu/8.1.0/include:/shared/centos7/gcc/8.1.0/include/c++/8.1.0:/shared/centos7/gcc/8.1.0/include/c++/8.1.0/x86_64-pc-linux-gnu:/shared/centos7/python/src/Python-3.6.6/Packages/libgpuarray/include:/shared/centos7/python/src/Python-3.6.6/Packages/libgpuarray/include/gpuarray:/shared/centos7/python/3.6.6/include:/shared/centos7/python/3.6.6/include/python3.6m:/shared/centos7/cuda/10.0/include:/shared/centos7/cuda/10.0/extras/CUPTI/include
+MANPATH=/shared/centos7/ruby/2.5.3/share/man:/shared/centos7/gcc/8.1.0/share/man:/shared/centos7/openmpi/4.0.3-cuda-gcc8.1.0/share/man:/shared/centos7/python/3.6.6/share/man:/shared/centos7/anaconda3/3.6/share/man:/shared/centos7/anaconda3/3.6/man:/shared/centos7/cuda/10.0/doc/man:/usr/local/share/man:/usr/share/man
+LIBRARY_PATH=/shared/centos7/ruby/2.5.3/lib:/shared/centos7/openmpi/4.0.3-cuda-gcc8.1.0/lib:/shared/centos7/python/3.6.6/lib:/shared/centos7/anaconda3/3.6/lib:/shared/centos7/cuda/10.0/lib64:/shared/centos7/cuda/10.0/extras/CUPTI/lib64
+LD_LIBRARY_PATH=/shared/centos7/ruby/2.5.3/lib:/shared/centos7/gcc/8.1.0/lib64:/shared/centos7/gcc/8.1.0/libexec/gcc/x86_64-pc-linux-gnu/8.1.0/:/shared/centos7/gcc/8.1.0/lib/gcc/x86_64-pc-linux-gnu/8.1.0/:/shared/centos7/openmpi/4.0.3-cuda-gcc8.1.0/lib:/shared/centos7/python/src/Python-3.6.6/Packages/libgpuarray/lib:/shared/centos7/python/3.6.6/lib/python3.6:/shared/centos7/python/3.6.6/lib:/shared/centos7/anaconda3/3.6/lib:/shared/centos7/cuda/10.0/lib64:/shared/centos7/cuda/10.0/extras/CUPTI/lib64:/home/raayaiardakani.m/modules/horovod/nccl_2.5.6-1+cuda10.0_x86_64/lib:/home/raayaiardakani.m/modules/horovod/TensorRT-6.0.1.5/lib:/home/raayaiardakani.m/modules/horovod/nccl_2.5.6-1+cuda10.0_x86_64/lib:/home/raayaiardakani.m/modules/horovod/TensorRT-6.0.1.5/lib
+CPATH=/shared/centos7/ruby/2.5.3/include:/shared/centos7/openmpi/4.0.3-cuda-gcc8.1.0/include:/shared/centos7/python/3.6.6/include:/shared/centos7/anaconda3/3.6/include:/shared/centos7/cuda/10.0/include:/shared/centos7/cuda/10.0/extras/CUPTI/include
+PATH=/home/raayaiardakani.m/.conda/envs/hpc-project/bin:/shared/centos7/ruby/2.5.3/bin:/shared/centos7/gcc/8.1.0/libexec/gcc/x86_64-pc-linux-gnu/8.1.0/:/shared/centos7/gcc/8.1.0/bin:/shared/centos7/openmpi/4.0.3-cuda-gcc8.1.0/bin:/shared/centos7/python/3.6.6/bin:/shared/centos7/anaconda3/3.6/bin:/shared/centos7/cuda/10.0/bin:/shared/centos7/discovery/bin:/usr/lib64/qt-3.3/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/raayaiardakani.m/.local/bin:/home/raayaiardakani.m/bin:/home/raayaiardakani.m/modules/nvim/nvim-base/usr/bin/:/home/raayaiardakani.m/modules/nvim/node/bin:/home/raayaiardakani.m/modules/nvim/anaconda3/bin
+C_INCLUDE_PATH=/shared/centos7/gcc/8.1.0/lib/gcc/x86_64-pc-linux-gnu/8.1.0/include:/shared/centos7/gcc/8.1.0/include/c++/8.1.0:/shared/centos7/gcc/8.1.0/include/c++/8.1.0/x86_64-pc-linux-gnu:/shared/centos7/python/src/Python-3.6.6/Packages/libgpuarray/include:/shared/centos7/python/src/Python-3.6.6/Packages/libgpuarray/include/gpuarray:/shared/centos7/python/3.6.6/include:/shared/centos7/python/3.6.6/include/python3.6m:/shared/centos7/cuda/10.0/include:/shared/centos7/cuda/10.0/extras/CUPTI/include
+MODULEPATH=/shared/centos7/modulefiles
+[1,1]<stdout>:[32m[0408 00:50:36 @imagenet-resnet-horovod.py:172][0m Training on c2194
+[1,1]<stdout>:Wed Apr  8 00:50:36 2020       
+[1,1]<stdout>:+-----------------------------------------------------------------------------+
+[1,1]<stdout>:| NVIDIA-SMI 410.48                 Driver Version: 410.48                    |
+[1,1]<stdout>:|-------------------------------+----------------------+----------------------+
+[1,1]<stdout>:| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+[1,1]<stdout>:| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+[1,1]<stdout>:|===============================+======================+======================|
+[1,1]<stdout>:|   0  Tesla P100-PCIE...  On   | 00000000:03:00.0 Off |                    0 |
+[1,1]<stdout>:| N/A   34C    P0    28W / 250W |      0MiB / 12198MiB |      0%      Default |
+[1,1]<stdout>:+-------------------------------+----------------------+----------------------+
+[1,1]<stdout>:|   1  Tesla P100-PCIE...  On   | 00000000:04:00.0 Off |                    0 |
+[1,1]<stdout>:| N/A   33C    P0    27W / 250W |      0MiB / 12198MiB |      0%      Default |
+[1,1]<stdout>:+-------------------------------+----------------------+----------------------+
+[1,1]<stdout>:|   2  Tesla P100-PCIE...  On   | 00000000:82:00.0 Off |                    0 |
+[1,1]<stdout>:| N/A   36C    P0    29W / 250W |      0MiB / 12198MiB |      0%      Default |
+[1,1]<stdout>:+-------------------------------+----------------------+----------------------+
+[1,1]<stdout>:|   3  Tesla P100-PCIE...  On   | 00000000:83:00.0 Off |                    0 |
+[1,1]<stdout>:| N/A   33C    P0    30W / 250W |      0MiB / 12198MiB |      0%      Default |
+[1,1]<stdout>:+-------------------------------+----------------------+----------------------+
+[1,1]<stdout>:                                                                               
+[1,1]<stdout>:+-----------------------------------------------------------------------------+
+[1,1]<stdout>:| Processes:                                                       GPU Memory |
+[1,1]<stdout>:|  GPU       PID   Type   Process name                             Usage      |
+[1,1]<stdout>:|=============================================================================|
+[1,1]<stdout>:|  No running processes found                                                 |
+[1,1]<stdout>:+-----------------------------------------------------------------------------+
+[1,0]<stdout>:[32m[0408 00:50:37 @imagenet-resnet-horovod.py:172][0m Training on c2180
+[1,0]<stdout>:Wed Apr  8 00:50:37 2020       
+[1,0]<stdout>:+-----------------------------------------------------------------------------+
+[1,0]<stdout>:| NVIDIA-SMI 410.48                 Driver Version: 410.48                    |
+[1,0]<stdout>:|-------------------------------+----------------------+----------------------+
+[1,0]<stdout>:| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+[1,0]<stdout>:| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+[1,0]<stdout>:|===============================+======================+======================|
+[1,0]<stdout>:|   0  Tesla K80           On   | 00000000:05:00.0 Off |                    0 |
+[1,0]<stdout>:| N/A   30C    P8    26W / 149W |      0MiB / 11441MiB |      0%      Default |
+[1,0]<stdout>:+-------------------------------+----------------------+----------------------+
+[1,0]<stdout>:|   1  Tesla K80           On   | 00000000:06:00.0 Off |                    0 |
+[1,0]<stdout>:| N/A   32C    P8    30W / 149W |      0MiB / 11441MiB |      0%      Default |
+[1,0]<stdout>:+-------------------------------+----------------------+----------------------+
+[1,0]<stdout>:|   2  Tesla K80           On   | 00000000:09:00.0 Off |                    0 |
+[1,0]<stdout>:| N/A   30C    P8    27W / 149W |      0MiB / 11441MiB |      0%      Default |
+[1,0]<stdout>:+-------------------------------+----------------------+----------------------+
+[1,0]<stdout>:|   3  Tesla K80           On   | 00000000:84:00.0 Off |                    0 |
+[1,0]<stdout>:| N/A   29C    P8    26W / 149W |      0MiB / 11441MiB |      0%      Default |
+[1,0]<stdout>:+-------------------------------+----------------------+----------------------+
+[1,0]<stdout>:                                                                               
+[1,0]<stdout>:+-----------------------------------------------------------------------------+
+[1,0]<stdout>:| Processes:                                                       GPU Memory |
+[1,0]<stdout>:|  GPU       PID   Type   Process name                             Usage      |
+[1,0]<stdout>:|=============================================================================|
+[1,0]<stdout>:|  No running processes found                                                 |
+[1,0]<stdout>:+-----------------------------------------------------------------------------+

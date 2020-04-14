@@ -1,0 +1,27 @@
+srun: Job step's --cpus-per-task value exceeds that of job (60 > 1). Job step may never run.
+srun: error: Unable to create step for job 10691274: More processors requested than permitted
+[1,1]<stderr>:2020-04-08 00:50:34.557363: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libnvinfer.so.6
+[1,1]<stderr>:2020-04-08 00:50:34.561266: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libnvinfer_plugin.so.6
+[1,0]<stderr>:2020-04-08 00:50:34.892855: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libnvinfer.so.6
+[1,0]<stderr>:2020-04-08 00:50:34.896402: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libnvinfer_plugin.so.6
+--------------------------------------------------------------------------
+At least one pair of MPI processes are unable to reach each other for
+MPI communications.  This means that no Open MPI device has indicated
+that it can be used to communicate between these processes.  This is
+an error; Open MPI requires that all MPI processes be able to reach
+each other.  This error can sometimes be the result of forgetting to
+specify the "self" BTL.
+
+  Process 1 ([[11151,1],1]) is on host: c2194
+  Process 2 ([[11151,1],0]) is on host: c2180
+  BTLs attempted: self
+
+Your MPI job is now going to abort; sorry.
+--------------------------------------------------------------------------
+[1,1]<stderr>:Error in MPI_Isend(47440398334508, 1, 0x2b2591f3aca0, 0, -27, 47440362474656) (-12)
+[c2194:96117] *** An error occurred in MPI_Comm_dup
+[c2194:96117] *** reported by process [730791937,1]
+[c2194:96117] *** on communicator MPI_COMM_WORLD
+[c2194:96117] *** MPI_ERR_INTERN: internal error
+[c2194:96117] *** MPI_ERRORS_ARE_FATAL (processes in this communicator will now abort,
+[c2194:96117] ***    and potentially your MPI job)

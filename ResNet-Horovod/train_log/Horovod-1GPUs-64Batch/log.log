@@ -1,0 +1,4 @@
+[32m[0408 00:40:21 @logger.py:92][0m Argv: ./imagenet-resnet-horovod.py --data /home/raayaiardakani.m/data/imagenet --batch 64 --validation distributed
+[32m[0408 00:40:21 @imagenet-resnet-horovod.py:184][0m Rank=0, Local Rank=0, Size=1
+[32m[0408 00:40:21 @imagenet-resnet-horovod.py:66][0m #Tower: 1; Batch size per tower: 64
+[32m[0408 00:40:21 @imagenet-resnet-horovod.py:81][0m Base LR: 0.0
