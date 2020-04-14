@@ -17,8 +17,9 @@ The original [study](https://arxiv.org/abs/1802.05799) done by Uber Technologied
 comparing distributed tensorflow's performance with Horovod using 2 CNN models, Inception V3 and
 ResNet-101.
 
-This study focuses on recreating those numbers, this time with the VGG-16 model without Batch Normalization,
-given how poorly it originally scaled with Horovod. Furthermore, we plan to measure both forward and 
+This study focuses on recreating those numbers, this time with the standard VGG-16 model
+provided by the framework of choice without Batch Normalization,
+given how poorly it originally scaled with Horovod. Furthermore, we measure both forward and 
 backwards performance instead of focusing only on forward pass performance, measured in synthetic images per
 second.
 
