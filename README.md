@@ -25,7 +25,8 @@ second.
 It is worth mentioning that we use the newest versions of the frameworks available at the time, which are 
 Tensorflow 2.1.0 and Pytorch 1.2.0. Both of these frameworks since the original study have undergone 
 heavy tweaks and modifications. This is especially true for Tensorflow>1.15, in which the TapeGrad and 
-newer and more diverse distributed training schemes were introduced.
+newer and more diverse distributed training schemes were introduced as well as support for newer 
+NVIDIA frameworks such as TensorRT and NCCL.
 
 This study __does not__ focus on inference performance despite it being an intriguing area of investigation.
 
@@ -38,3 +39,9 @@ The frameworks of interest in this project are [Tensorflow](https://tensorflow.o
 
 For instructions on how to setup each framework on a cluster/slurm environment, look into the folder
 specific to that framework.
+
+# Horovod Setup on a Compute Cluster/Slurm Environment
+## Pre-requisites
+### NCCL
+
+### Horovod Install Using Pip
