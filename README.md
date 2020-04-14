@@ -12,7 +12,7 @@ how easy/hard it is to take a Single Device training script in a supported deep 
 and make it distributed using Horovod and compare the process/performance of the same training script
 turned distributed using the native tools provided by that framework and nothing else.
 
-# Performance Metrics
+# What This Study Focuses On
 The original [study](https://arxiv.org/abs/1802.05799) done by Uber Technologied focused on
 comparing distributed tensorflow's performance with Horovod using 2 CNN models, Inception V3 and
 ResNet-101.
@@ -28,9 +28,13 @@ heavy tweaks and modifications. This is especially true for Tensorflow>1.15, in 
 newer and more diverse distributed training schemes were introduced as well as support for newer 
 NVIDIA frameworks such as TensorRT and NCCL.
 
-This study __does not__ focus on inference performance despite it being an intriguing area of investigation.
+# What This Study Doesn't Focus On
+- This study __does not__ focus on frameworks made on or leveraging other frameworks such as TensorPack,
+Tensor Flow Mesh, or Keras.
 
-This study also __does not__ focus on other classes of DNNs such as RNNs or GANs, despite it possibly 
+- This study __does not__ focus on inference performance despite it being an intriguing area of investigation.
+
+- This study __does not__ focus on other classes of DNNs such as RNNs or GANs, despite it possibly 
 introducing interesting complications worth investigating.
 
 # Studied Frameworks
