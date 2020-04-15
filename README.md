@@ -33,6 +33,8 @@ NVIDIA frameworks such as TensorRT and NCCL.
 - This study __does not__ focus on frameworks made on or leveraging other frameworks such as TensorPack,
 Tensor Flow Mesh, or Keras.
 
+- This study __does not__ focus on benchmarking optimization techniques such as adaptive learning rate.
+
 - This study __does not__ focus on inference performance despite it being an intriguing area of investigation.
 
 - This study __does not__ focus on other classes of DNNs such as RNNs or GANs, despite it possibly 
