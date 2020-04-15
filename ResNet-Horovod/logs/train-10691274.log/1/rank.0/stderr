@@ -1,2 +1,0 @@
-[1,0]<stderr>:2020-04-08 00:50:34.892855: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libnvinfer.so.6
-[1,0]<stderr>:2020-04-08 00:50:34.896402: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libnvinfer_plugin.so.6
