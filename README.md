@@ -23,8 +23,8 @@ given how poorly it originally scaled with Horovod. Furthermore, we measure both
 backwards performance instead of focusing only on forward pass performance, measured in synthetic images per
 second.
 
-It is worth mentioning that we use the newest versions of the frameworks available at the time, which are 
-Tensorflow 2.1.0 and Pytorch 1.2.0. Both of these frameworks since the original study have undergone 
+It is worth mentioning that we use the newest versions of the frameworks available for CUDA 10.0 
+at the time, which are Tensorflow 2.0.0 and Pytorch 1.2.0. Both of these frameworks since the original study have undergone 
 heavy tweaks and modifications. This is especially true for Tensorflow>1.15, in which the TapeGrad and 
 newer and more diverse distributed training schemes were introduced as well as support for newer 
 NVIDIA frameworks such as TensorRT and NCCL.
