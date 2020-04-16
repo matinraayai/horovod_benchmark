@@ -50,5 +50,16 @@ specific to that framework.
 # Horovod Setup on a Compute Cluster/Slurm Environment
 ## Pre-requisites
 ### NCCL
-
+A local NCCL installation for CUDA 10.0 is required for these benchmarks to run on discovery.
+For more information, visit NVIDIA Developers' website.
 ### Horovod Install Using Pip
+Before installing and compiling Horovod, make sure that:
+- The intended Tensorflow GPU (2.0.0) and Pytorch (1.2.0) packages are installed via Pip.
+- The NCCL library location is included in your path.
+- GCC Version 6 or higher is loaded.
+- OpenMPI version 4 or higher is loaded.
+- Anaconda/Python version 3 is loaded.
+- CUDA 10.0 is loaded.
+for more information on how to install Horovod with appropriate flags and support, visit
+[Horovod's Github repository](https:github.com/horovod/horovod).
+
