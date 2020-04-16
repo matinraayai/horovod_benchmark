@@ -60,6 +60,11 @@ Before installing and compiling Horovod, make sure that:
 - OpenMPI version 4 or higher is loaded.
 - Anaconda/Python version 3 is loaded.
 - CUDA 10.0 is loaded.
-for more information on how to install Horovod with appropriate flags and support, visit
+For more information on how to install Horovod with appropriate flags and support, visit
 [Horovod's Github repository](https://github.com/horovod/horovod).
-
+### Running Horovod
+For running Horovod across multiple nodes, make sure that no-authentication access is enabled for your Cluster account so that
+it's possible to ssh from a node to another without requiring a password.
+Make sure that the node you're running on is correctly configured to run multiple MPI processes. If not, run horovod with the ```--mpi-args=--oversubscribe``` flag.
+For more information on how to run Horovod using ```horovodrun```visit
+[Horovod's Github repository](https://github.com/horovod/horovod).
