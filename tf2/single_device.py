@@ -96,17 +96,15 @@ with tf.device('GPU'):
     print('Running benchmark...')
     img_secs = []
     for epoch in range(args.num_epochs):
-        time = 0.
-        num_images = 0
         for dataset_inputs in train_dataset:
-            time += timeit.timeit(lambda: benchmark_step(dataset_inputs),
+            time = timeit.timeit(lambda: benchmark_step(dataset_inputs),
                                   number=1)
-            num_images += args.batch_size
+            num_images = len(dataset_inputs[0])
+            img_sec = num_images / time 
             print('Current forward pass speed: %.3f img/sec.' 
-                  % (num_images / time))
-            img_sec = num_images / time
+                  % img_sec)
             img_secs.append(img_sec)
-        print('Epoch #%d: %.3f img/sec' % (epoch, img_sec))
+        print('Epoch #%d: %.3f img/sec' % (epoch, tf.reduce_min(img_sec).numpy()))
 
     # Final results:===========================================================#
     img_sec_mean = tf.reduce_min(img_secs)

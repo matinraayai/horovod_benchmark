@@ -25,7 +25,7 @@ import tensorflow as tf
 import tensorflow_datasets as tfds
 import horovod.tensorflow as hvd
 from tensorflow.keras import applications
-
+import numpy as np
 
 # Logging function on Rank 0:==================================================#
 def log(s, nl=True):
@@ -44,7 +44,7 @@ parser.add_argument('--batch-size-per-replica', type=int, default=64,
                     help='batch size per a single GPU (replica)')
 parser.add_argument('--buffer', type=int, default=10000,
                     help='buffer size for the distributed training dataset')
-parser.add_argument('--num-warmup-batches', type=int, default=3,
+parser.add_argument('--num-warmup-batches', type=int, default=10,
                     help='number of warm-up batches that don\'t count towards the benchmark')
 args = parser.parse_args()
 
@@ -65,7 +65,6 @@ tfds.disable_progress_bar()
 datasets, info = tfds.load(name='cifar100', with_info=True, as_supervised=True)
 cifar100_train, cifar100_test = datasets['train'], datasets['test']
 
-batch_size = args.batch_size_per_replica * hvd.size()
 
 '''
 Pre-processing the CIFAR100 Dataset to be fed to the VGG-16 network.
@@ -79,7 +78,7 @@ def pre_process(image, label):
 
 train_dataset = cifar100_train.map(pre_process)\
                               .shuffle(args.buffer)\
-                              .batch(batch_size)
+                              .batch(args.batch_size_per_replica)
 
 # Standard model:==============================================================#
 model = applications.vgg16.VGG16(weights=None, pooling='max', classes=100)
@@ -99,7 +98,7 @@ def benchmark_step(dataset_inputs, first_batch=False):
     y_label = tf.reshape(y_label, (y_label[0], 1))
     with tf.GradientTape() as tape:
         prediction = model(x_input, training=True)
-        loss = tf.losses.categorical_crossentropy(y_label, prediction)
+        loss = tf.losses.sparse_categorical_crossentropy(y_label, prediction)
     # Horovod: add Horovod Distributed GradientTape for reduction:=============#
     tape = hvd.DistributedGradientTape(tape)
     gradients = tape.gradient(loss, model.trainable_variables)
@@ -129,24 +128,22 @@ with tf.device('GPU'):
     log('Running benchmark...')
     img_secs = []
     for epoch in range(args.num_epochs):
-        time = 0.
-        num_images = 0
-        for dataset_inputs in train_dataset:
-            time += timeit.timeit(lambda: benchmark_step(dataset_inputs),
+        for dataset_inputs in train_dataset.take(args.num_batches_per_epoch):
+            time = timeit.timeit(lambda: benchmark_step(dataset_inputs),
                                   number=1)
-            num_images += args.batch_size_per_replica
-            print('Current forward pass speed per device: %.3f img/sec.' 
-                  % (num_images / time))
+            num_images = len(dataset_inputs[0])
             img_sec = num_images / time
+            print('Current forward pass speed per device: %.3f img/sec.' 
+                  % img_sec)
             img_secs.append(img_sec)
-        print('Epoch #%d: %.3f img/sec per device' % (epoch, img_sec))
+        print('Epoch #%d: %.3f img/sec per device' % (epoch, np.mean(img_secs)))
 
     # Final results:===========================================================#
-    img_sec_mean = tf.reduce_min(img_secs)
-    img_sec_conf = 1.96 * tf.math.reduce_std(img_secs)
-    print('Img/sec per device: %.3f +-%.3f' % (img_sec_mean.numpy(),
-                                               img_sec_conf.numpy()))
-    img_sec_mean = hvd.allreduce(img_sec_mean, op=1).numpy()
-    img_sec_conf = hvd.allreduce(img_sec_conf, op=1).numpy()
+    img_sec_mean = np.mean(img_secs)
+    img_sec_conf = 1.96 * np.std(img_secs)
+    print('Img/sec per device: %.3f +-%.3f' % (img_sec_mean,
+                                               img_sec_conf))
+    img_sec_mean = hvd.allreduce(img_sec_mean, op=1)
+    img_sec_conf = hvd.allreduce(img_sec_conf, op=1)
     log('Total img/sec on %d Device(s): %.3f +-%.3f' %
         (hvd.size(), img_sec_mean, img_sec_conf))
