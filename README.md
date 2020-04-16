@@ -61,5 +61,5 @@ Before installing and compiling Horovod, make sure that:
 - Anaconda/Python version 3 is loaded.
 - CUDA 10.0 is loaded.
 for more information on how to install Horovod with appropriate flags and support, visit
-[Horovod's Github repository](https:github.com/horovod/horovod).
+[Horovod's Github repository](https://github.com/horovod/horovod).
 
