@@ -23,17 +23,17 @@ given how poorly it originally scaled with Horovod. Furthermore, we measure both
 backwards performance instead of focusing only on forward pass performance, measured in synthetic images per
 second.
 
-It is worth mentioning that we use the newest versions of the frameworks available for CUDA 10.0 
-at the time, which are Tensorflow 2.0.0 and Pytorch 1.2.0. Both of these frameworks since the original study have undergone 
-heavy tweaks and modifications. This is especially true for Tensorflow>1.15, in which the TapeGrad and 
+It is worth mentioning that we use the newest version of the Tensorflow available for CUDA 10.0 
+at the time, which is 2.0.0. Tensorflow since the original study has undergone 
+heavy tweaks and modifications since 1.15, especially with the TapeGrad and 
 newer and more diverse distributed training schemes were introduced as well as support for newer 
 NVIDIA frameworks such as TensorRT and NCCL.
 
 # What This Study Doesn't Focus On
 - This study __does not__ focus on frameworks made on or leveraging other frameworks such as TensorPack,
-Tensor Flow Mesh, or Keras.
+Tensor Flow Mesh, Pytorch Lightning, or Keras.
 
-- This study __does not__ focus on benchmarking optimization techniques such as adaptive learning rate.
+- This study __does not__ focus on benchmarking optimization techniques such as adaptive learning rate, warm up, etc.
 
 - This study __does not__ focus on inference performance despite it being an intriguing area of investigation.
 
@@ -41,11 +41,7 @@ Tensor Flow Mesh, or Keras.
 introducing interesting complications worth investigating.
 
 # Studied Frameworks
-The frameworks of interest in this project are [Tensorflow](https://tensorflow.org) and 
-[Pytorch](https://pytorch.org).
-
-For instructions on how to setup each framework on a cluster/slurm environment, look into the folder
-specific to that framework.
+The frameworks of interest in this project is [Tensorflow](https://tensorflow.org).
 
 # Horovod Setup on a Compute Cluster/Slurm Environment
 ## Pre-requisites
